@@ -11,18 +11,15 @@ namespace BubtAnnexSystem2
     class CONNECT
     {
         private MySqlConnection connection = new MySqlConnection("Datasource=localhost;port=3306;Username=root;Password=root;Database=bubtannex");
-
         public MySqlConnection GetConnection()
         {
             return connection;
         }
-
         public void openConnection()
         {
             if(connection.State == ConnectionState.Closed)
             {
                 connection.Open();
-
             }
         }
         public void closeConnection()
@@ -30,7 +27,6 @@ namespace BubtAnnexSystem2
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
-
             }
         }
     }
