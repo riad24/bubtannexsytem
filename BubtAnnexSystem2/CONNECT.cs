@@ -15,6 +15,7 @@ namespace BubtAnnexSystem2
         {
             return connection;
         }
+
         public void openConnection()
         {
             if(connection.State == ConnectionState.Closed)
@@ -22,6 +23,7 @@ namespace BubtAnnexSystem2
                 connection.Open();
             }
         }
+
         public void closeConnection()
         {
             if (connection.State == ConnectionState.Open)
