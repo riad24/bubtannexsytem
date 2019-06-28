@@ -31,9 +31,9 @@ namespace BubtAnnexSystem2
             }
             else
             {
-                String insertClient = student.insertStudent(name, rool, dpt, inteck);
+                String insertStudent = student.insertStudent(name, rool, dpt, inteck);
 
-                if (insertClient == "ok")
+                if (insertStudent == "ok")
                 {
                     textBoxname.Text = "";
                     textBoxroll.Text = "";
@@ -44,9 +44,13 @@ namespace BubtAnnexSystem2
 
                     MessageBox.Show("New Student Inserted Successfuly", "Inserted Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if (insertClient == "no")
+                else if (insertStudent == "no")
                 {
                     MessageBox.Show("Error-Student", "Add Inserted Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }else if (insertStudent == "insert")
+                {
+                    MessageBox.Show("Student Roll ID Already Insert", "Add Inserted Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
@@ -69,6 +73,57 @@ namespace BubtAnnexSystem2
         public void studentGridviewLoad()
         {
             dataGridViewStudent.DataSource = student.getStudent();
+        }
+
+        private void DataGridViewStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxname.Text = dataGridViewStudent.CurrentRow.Cells[0].Value.ToString();
+            textBoxroll.Text = dataGridViewStudent.CurrentRow.Cells[1].Value.ToString();
+            dptselectbox.SelectedItem = dataGridViewStudent.CurrentRow.Cells[2].Value.ToString();
+            textBoxinteck.Text = dataGridViewStudent.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            String name = textBoxname.Text;
+            String rool = textBoxroll.Text;
+            String inteck = textBoxinteck.Text;
+            String dpt = ((KeyValuePair<string, string>)dptselectbox.SelectedItem).Value.ToString();
+
+            
+
+                try
+            {
+                if (name.Trim().Equals("") || rool.Trim().Equals("") || dpt.Trim().Equals(""))
+                {
+                    MessageBox.Show("Required Fields - Name , Roll & Department", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    Boolean insertClient = student.editStudent(name, rool, dpt, inteck);
+
+                    if (insertClient)
+                    {
+                        textBoxname.Text = "";
+                        textBoxroll.Text = "";
+                        textBoxinteck.Text = "";
+                        dptselectbox.SelectedText = "";
+                        dataGridViewStudent.DataSource = student.getStudent();
+                        MessageBox.Show("Student Updated Successfuly", "Edit Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR - Student Not Updated", "Edit Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }

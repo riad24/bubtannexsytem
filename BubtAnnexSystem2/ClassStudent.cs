@@ -27,9 +27,31 @@ namespace BubtAnnexSystem2
         }
         public string insertStudent(string name, string rool, string dptname, string inteck)
         {
-                MySql.Data.MySqlClient.MySqlCommand command = new MySql.Data.MySqlClient.MySqlCommand();
+            MySqlCommand studentComm = new MySqlCommand("SELECT * FROM `student` where rollid=@id", conn.GetConnection());
+            MySqlDataAdapter Studentadapter = new MySqlDataAdapter();
+            studentComm.Parameters.AddWithValue("@id", rool);
+            studentComm.Connection = conn.GetConnection();
+            studentComm.Connection.Open();
 
-                String insertQuery = "INSERT INTO routine (name, rollid, dptname, intek) VALUES (@name,@rool,@dpt,@intk)";
+            MySqlDataReader studentreader;
+            studentreader = studentComm.ExecuteReader();
+            int count = 0;
+            string userRole = string.Empty;
+            while (studentreader.Read())
+            {
+                count = count + 1;
+                userRole = studentreader["rollid"].ToString();
+            }
+            if (count == 1)
+            {
+                conn.closeConnection();
+                return "insert";
+            }
+            else
+            {
+                conn.closeConnection();
+                MySql.Data.MySqlClient.MySqlCommand command = new MySql.Data.MySqlClient.MySqlCommand();
+                String insertQuery = "INSERT INTO student (name, rollid, dptname, intek) VALUES (@name,@rool,@dpt,@intk)";
                 command.CommandText = insertQuery;
                 command.Connection = conn.GetConnection();
                 command.Connection.Open();
@@ -50,6 +72,38 @@ namespace BubtAnnexSystem2
                     conn.closeConnection();
                     return "no";
                 }
+            }
+
+
+                
+
+        }
+
+        public Boolean editStudent(string name, string rool, string dptname, string inteck)
+        {
+            MySql.Data.MySqlClient.MySqlCommand command = new MySql.Data.MySqlClient.MySqlCommand();
+
+            String insertQuery = "UPDATE student SET name=@name, dptname=@dpt, intek=@intk WHERE rollid=@rool";
+            command.CommandText = insertQuery;
+            command.Connection = conn.GetConnection();
+            command.Connection.Open();
+
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+            command.Parameters.Add("@rool", MySqlDbType.VarChar).Value = rool;
+            command.Parameters.Add("@dpt", MySqlDbType.VarChar).Value = dptname;
+            command.Parameters.Add("@intk", MySqlDbType.VarChar).Value = inteck;
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
 
         }
 
