@@ -17,7 +17,6 @@ namespace BubtAnnexSystem2
             InitializeComponent();
         }
 
-
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             this.Hide();
