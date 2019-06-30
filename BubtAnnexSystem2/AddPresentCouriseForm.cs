@@ -30,6 +30,7 @@ namespace BubtAnnexSystem2
             String final = finalBox.Text;
             String type = typeBox.Text;
             String userid = useridBox.Text;
+	    //String userid = useridBox.Text;
 
             if (coursetitle.Trim().Equals("") || coursecode.Trim().Equals(""))
             {
@@ -50,14 +51,11 @@ namespace BubtAnnexSystem2
                     midBox.Text = "";
                     finalBox.Text = "";
                     prsentCourseGridviewLoad();
-
-
                     MessageBox.Show("New Present Course Inserted Successfuly", "Inserted Present Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (insertClient == "no")
                 {
                     MessageBox.Show("Error-Present Course", "Add Inserted Present Course", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
 
             }
