@@ -42,8 +42,6 @@ namespace BubtAnnexSystem2
                     textRoom.Text = "";
                     Dayselectbox.SelectedText = "";
                     routineGridviewLoad();
-
-
                     MessageBox.Show("New Student Inserted Successfuly", "Inserted Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (insertClient == "no")
@@ -58,7 +56,6 @@ namespace BubtAnnexSystem2
         private void AddRoutineForm_Load(object sender, EventArgs e)
         {
             dataGridViewRoutine.DataSource = routine.getRoutine();
-
             Dictionary<string, string> comboSource = new Dictionary<string, string>();
             comboSource.Add("SATERDAY", "SATERDAY");
             comboSource.Add("SUNDAY", "SUNDAY");

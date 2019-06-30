@@ -76,5 +76,33 @@ namespace BubtAnnexSystem2
 
         }
 
+ 	public Boolean editPresentCourse(string name, string rool, string dptname, string inteck)
+        {
+            MySql.Data.MySqlClient.MySqlCommand command = new MySql.Data.MySqlClient.MySqlCommand();
+
+            String insertQuery = "UPDATE student SET name=@name, dptname=@dpt, intek=@intk WHERE rollid=@rool";
+            command.CommandText = insertQuery;
+            command.Connection = conn.GetConnection();
+            command.Connection.Open();
+
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = name;
+            command.Parameters.Add("@rool", MySqlDbType.VarChar).Value = rool;
+            command.Parameters.Add("@dpt", MySqlDbType.VarChar).Value = dptname;
+            command.Parameters.Add("@intk", MySqlDbType.VarChar).Value = inteck;
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                conn.closeConnection();
+                return true;
+            }
+            else
+            {
+                conn.closeConnection();
+                return false;
+            }
+
+        }
+
+
     }
 }
