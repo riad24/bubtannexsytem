@@ -17,12 +17,9 @@ namespace BubtAnnexSystem2
             MySqlCommand command = new MySqlCommand("SELECT name AS Name, rollid as 'Roll Id', dptname as Department,intek as Intek FROM `student`", conn.GetConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
-
             adapter.SelectCommand = command;
             adapter.Fill(table);
-
             return table;
-
 
         }
         public string insertStudent(string name, string rool, string dptname, string inteck)
@@ -32,7 +29,6 @@ namespace BubtAnnexSystem2
             studentComm.Parameters.AddWithValue("@id", rool);
             studentComm.Connection = conn.GetConnection();
             studentComm.Connection.Open();
-
             MySqlDataReader studentreader;
             studentreader = studentComm.ExecuteReader();
             int count = 0;
@@ -63,7 +59,6 @@ namespace BubtAnnexSystem2
 
                 if (command.ExecuteNonQuery() == 1)
                 {
-
                     conn.closeConnection();
                     return "ok";
                 }
@@ -72,10 +67,7 @@ namespace BubtAnnexSystem2
                     conn.closeConnection();
                     return "no";
                 }
-            }
-
-
-                
+            }     
 
         }
 
@@ -95,7 +87,6 @@ namespace BubtAnnexSystem2
 
             if (command.ExecuteNonQuery() == 1)
             {
-
                 conn.closeConnection();
                 return true;
             }
