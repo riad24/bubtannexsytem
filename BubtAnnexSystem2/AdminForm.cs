@@ -26,7 +26,6 @@ namespace BubtAnnexSystem2
 
         private void ButtonStudent_Click(object sender, EventArgs e)
         {
-           
             StudentForm sform = new StudentForm();
             sform.ShowDialog();
         }
