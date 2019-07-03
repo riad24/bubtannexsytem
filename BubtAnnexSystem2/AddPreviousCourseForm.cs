@@ -31,14 +31,13 @@ namespace BubtAnnexSystem2
             String type = typeBox.Text;
             String userid = useridBox.Text;
 
-            if (coursetitle.Trim().Equals("") || coursecode.Trim().Equals(""))
+            if (userid.Trim().Equals("") || coursetitle.Trim().Equals("") || coursecode.Trim().Equals("") || credit.Trim().Equals(""))
             {
                 MessageBox.Show("Required Fields - Course Title & Course Code", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 String insertClient = pvcourse.insertPreviousCourse(coursetitle, coursecode, credit, type, grade, final, mid, outof, userid);
-
                 if (insertClient == "ok")
                 {
                     coursetitleBox.Text = "";
@@ -51,8 +50,6 @@ namespace BubtAnnexSystem2
                     finalBox.Text = "";
                     useridBox.Text = "";
                     previousCourseGridviewLoad();
-
-
                     MessageBox.Show("New Previous Course Inserted Successfuly", "Inserted Previous Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (insertClient == "no")
