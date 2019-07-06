@@ -2,15 +2,8 @@
 {
     partial class AddPresentCouriseForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
+       
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,11 +14,6 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -251,7 +239,6 @@
             this.PresentCourseAdd.Text = "Add";
             this.PresentCourseAdd.UseVisualStyleBackColor = false;
             this.PresentCourseAdd.Click += new System.EventHandler(this.PresentCourseAdd_Click_1);
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label5);
@@ -492,7 +479,6 @@
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
