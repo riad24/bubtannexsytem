@@ -40,24 +40,22 @@ namespace BubtAnnexSystem2
                 String insertClient = pvcourse.insertPreviousCourse(coursetitle, coursecode, credit, type, grade, final, mid, outof, userid);
                 if (insertClient == "ok")
                 {
-                    coursetitleBox.Text = "";
-                    coursecodeBox.Text = "";
-                    creditBox.Text = "";
-                    typeBox.Text = "";
-                    gradeBox.Text = "";
-                    outBox.Text = "";
-                    midBox.Text = "";
-                    finalBox.Text = "";
-                    useridBox.Text = "";
+                    coursetitleBox.Text   = "";
+                    coursecodeBox.Text    = "";
+                    creditBox.Text        = "";
+                    typeBox.Text          = "";
+                    gradeBox.Text         = "";
+                    outBox.Text           = "";
+                    midBox.Text           = "";
+                    finalBox.Text         = "";
+                    useridBox.Text        = "";
                     previousCourseGridviewLoad();
                     MessageBox.Show("New Previous Course Inserted Successfuly", "Inserted Previous Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (insertClient == "no")
                 {
                     MessageBox.Show("Error-Previous Course", "Add Inserted Previous Course", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
-
             }
         }
 
