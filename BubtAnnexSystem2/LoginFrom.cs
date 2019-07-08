@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-
-
 namespace BubtAnnexSystem2
 {
     public partial class LoginFrom : Form
@@ -99,8 +97,6 @@ namespace BubtAnnexSystem2
                     MessageBox.Show("This ID Or Password Doesn't Exists", "Wrong Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-           
 
         }
 
