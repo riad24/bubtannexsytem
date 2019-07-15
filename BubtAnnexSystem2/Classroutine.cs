@@ -11,7 +11,6 @@ namespace BubtAnnexSystem2
     class Classroutine
     {
         CONNECT conn = new CONNECT();
-
         public DataTable getRoutine()
         {
             MySqlCommand command = new MySqlCommand("SELECT day AS Day, time as Time, subjectcode as 'Subject Code',subjectname as 'Subject Name', room as Room FROM `routine`", conn.GetConnection());
@@ -20,9 +19,7 @@ namespace BubtAnnexSystem2
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
-
             return table;
-
 
         }
         public string insertRoutine(string day, string time, string subjectcode, string subjectname,string room)
